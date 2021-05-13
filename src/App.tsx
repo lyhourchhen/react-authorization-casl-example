@@ -6,6 +6,8 @@ import Todo from "./Todo";
 function App() {
   const [role, setRole] = useState("admin");
   const ability = buildAbilityFor(role);
+
+  console.log("log ability", ability);
   return (
     <div className="App">
       <AbilityContext.Provider value={ability}>

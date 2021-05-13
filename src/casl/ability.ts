@@ -1,7 +1,7 @@
 import { AbilityBuilder, Ability, AbilityClass } from "@casl/ability";
 
 type Actions = "manage" | "create" | "read" | "update" | "delete";
-type Subjects = "Todo";
+type Subjects = "Todo" | "Config";
 
 export type AppAbility = Ability<[Actions, Subjects]>;
 export const AppAbility = Ability as AbilityClass<AppAbility>;
@@ -16,7 +16,7 @@ export default function defineRulesFor(role: string) {
   // }
   switch (role) {
     case "super-admin":
-      can("manage", "Todo");
+      can("manage", ["Todo", "Config"]);
     case "admin":
       can(["create", "read", "delete"], "Todo");
     case "staff":
