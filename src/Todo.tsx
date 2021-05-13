@@ -54,8 +54,10 @@ const Todo: FC<{
               labelId="demo-simple-select-label"
               id="demo-simple-select"
             >
+              <MenuItem value={"super-admin"}>Super Admin</MenuItem>
               <MenuItem value={"admin"}>Admin</MenuItem>
               <MenuItem value={"staff"}>Staff</MenuItem>
+              <MenuItem value={"viewer"}>Viewer</MenuItem>
             </Select>
           </div>
           <div style={{ display: "flex", alignItems: "center" }}>
@@ -69,23 +71,25 @@ const Todo: FC<{
                 value={value}
               />
               <span style={{ padding: 5 }} />
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => {
-                  setTodo([
-                    // @ts-ignore
-                    ...todo,
-                    {
-                      id: uuid(),
-                      value: value,
-                    },
-                  ]);
-                  setValue("");
-                }}
-              >
-                Add
-              </Button>
+              <Can I="create" a="Todo">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => {
+                    setTodo([
+                      // @ts-ignore
+                      ...todo,
+                      {
+                        id: uuid(),
+                        value: value,
+                      },
+                    ]);
+                    setValue("");
+                  }}
+                >
+                  Add
+                </Button>
+              </Can>
             </form>
           </div>
           <div>
@@ -98,7 +102,7 @@ const Todo: FC<{
                   style={{ marginTop: 10, marginBottom: 10 }}
                 >
                   <ListItemIcon>
-                    <Can I="create" a="all">
+                    <Can I="delete" a="Todo">
                       <DeleteOutline
                         onClick={() => {
                           const deleteValue = todo.filter(

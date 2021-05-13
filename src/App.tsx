@@ -9,6 +9,7 @@ function App() {
   return (
     <div className="App">
       <AbilityContext.Provider value={ability}>
+        <h2>Current role: {role}</h2>
         <Todo role={(role) => setRole(role)} />
       </AbilityContext.Provider>
     </div>
